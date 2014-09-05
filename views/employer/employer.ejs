@@ -1,0 +1,7 @@
+<% include ../common/header %>
+<% include ../common/sidebar %>
+<p>Страница показа работодателя!</p>
+<% var status = typeof employer!='undefined' %>
+<p>Название компании: <% if(status && employer.title){ %><%= employer.title %><% } %></p>
+<p>Описание компании: <% if(status && employer.title){ %><%= employer.desc %><% } %></p>
+<p><% include ../common/footer %></p>

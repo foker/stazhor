@@ -1,0 +1,12 @@
+<% include ../common/header %>
+<% include ../common/admin_sidebar %>
+<p>Страница редактирования категории!</p>
+<%var status = typeof category!='undefined'%>
+<form action="/admin/categories/<%=category.id%>/save" method="post">
+    <p>Название</p>
+    <input type="text" name="title" value="<%if(status && category.title){%><%=category.title%><%}%>">
+    <p>Родительская группа</p>
+    <input type="text" name="parent" value="<%if(status && category.parent){%><%=category.parent%><%}%>">
+    <input type="submit">
+</form>
+<% include ../common/footer %>

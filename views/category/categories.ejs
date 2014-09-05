@@ -1,0 +1,13 @@
+<% include ../common/header %>
+<% include ../common/admin_sidebar %>
+<div class="padding">
+    <% if(categories) { %>
+    <% for(key in categories){ %>
+		<%var item = categories[key]%>
+	    <%include ./pre-_category%>
+	<% } %>
+    <% } else {%>
+    <span>Еще не создана ни одной категории! Вы можете изменить это, <a href="/admin/categories/new">создав новую</a>!</span>
+    <% } %>
+</div>
+<% include ../common/footer%>

@@ -1,0 +1,49 @@
+<% include ../common/header %>
+<% include ../common/sidebar %>
+<div class="padding">
+<h1>Страница создания нового поста</h1>
+<%var status = typeof data != 'undefined'%>
+<form action="/post/" method="post" id="post_filling">
+	<div>
+    <legend>Название</legend>
+    <input type="text" name="title" value="">
+	</div>
+	<div>
+    <legend>Описание</legend>
+    <textarea name="desc"></textarea>
+	</div>
+	<div>
+    <legend>Зарплата</legend>
+    <input type="text" name="salary" value=""><span>р.</span>
+	</div>
+	<div>
+    <legend>Город</legend>
+    <select name="city">
+		<option value="-1">Город</option>
+		<% if(cities){ cities.forEach(function(city){%>
+			<option value="<%=city.id%>" <%if( data.city && city.id==data.city){%>selected<%}%>><%=city.title%></option>
+		<% }); } %>
+	</select>
+	</div>
+	<div>
+    <legend>Телефон</legend>
+    <input type="text" name="phone" value="<%if(status && data.city){%><%=data.phone %><% } %>">
+	</div>
+	<div>
+    <legend>Сайт компании</legend>
+    <input type="text" name="site" value="<%if(status && data.city){%><%=data.site %> <% } %>">
+	</div>
+	<div>
+	<legend>Категория</legend>
+	<select name="category">
+	<%categories.forEach(function(cat){%>
+	<option value="<%=cat.id%>"><%=cat.title%></option>
+	<%});%>
+	</select>
+	</div>
+    <input type="submit">
+
+
+</form>
+</div>
+<% include ../common/footer %>

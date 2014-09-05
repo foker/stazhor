@@ -1,0 +1,73 @@
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer-box">
+    <div id="footer">
+        <div id="footer-logo">
+            <a href="/"><img src="/public/images/logo.png"></a>
+        </div>
+        <div class="footer-links">
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="/public/commonjs/angular.min.js"></script>
+<script type="text/javascript">
+
+    var nodeApp = angular.module('nodeApp', []);
+
+    nodeApp.factory('asyncFactory', function($http, $q){
+        var factory = {};
+
+        factory.getSidebar = function(){
+            var def = $q.defer();
+            $http({method:'GET', url:'http://localhost:3000/JSON/getSidebar'})
+                    .success(function(data){
+
+                        return def.resolve(data);
+                    })
+                    .error(function(){
+                        return def.reject();
+                    });
+            return def.promise;
+        };
+        return factory;
+    });
+
+    nodeApp.controller('sidebar', function($scope, $document, asyncFactory){
+        var init = function(){
+            asyncFactory.getSidebar()
+                    .then(function(data){
+                        $scope.cities = data.cities;
+                        console.log($scope.cities);
+                        $scope.cats = data.cats
+                    }, function(){
+
+                    });
+        };
+
+        init();
+
+        $scope.openCityForm = function(){
+            $document.find('#city_modal').show();
+        };
+    });
+
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+

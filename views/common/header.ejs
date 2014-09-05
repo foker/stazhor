@@ -1,0 +1,60 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta name='yandex-verification' content='4a145746f8bea02d' />
+<title>Колохост</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" media="all" href="/style.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body data-ng-app="nodeApp">
+<div id="city_modal" class="modal" ng-controller="sidebar">
+    <div id="city_widget">
+        <div class="close"></div>
+        <input type="text" ng-model="cityWidget.filter" />
+        <div>
+            <ul>
+                <li ng-repeat="city in cities | filter: cityWidget.filter | limitTo: 10">{{city.title}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal"  id="feedback_modal">
+<div id="feedback">
+
+				<p>Обратная связь</p>
+				<form action="" method="post">
+					<input type="text" name="feedname" value="Ваше имя" class="placeholder">
+					<input type="text" name="feedmail" value="E-mail или телефон" class="placeholder">
+					<textarea name="feedtext"></textarea>
+					<input type="submit">
+				</form>
+</div>
+</div>
+
+<div id="container">
+<div>
+	<div id="header">
+		<div id="logo">
+			<a href="/"><img src="/public/images/logo.png" alt=""></a>
+		</div>
+		<h2 id="title">Практика и стажировка для студентов, вакансии без опыта работы</h2>
+		<% include searchform %>
+		<div id="enter_link">
+			<%if(typeof userGroup!='undefined' && userGroup > 0){%>
+				<a href="/cabinet/">Личный кабинет</a>
+			<% } else {%>
+				<a href="/register/">Регистрация</a>
+			<% } %>
+			<div class="triangle"></div>
+		</div>
+		<div id="authorization">
+			<%if(typeof userGroup!='undefined' && userGroup > 0){%>
+				<a href="/exit/">Выйти</a>
+			<% } else {%>
+				<a href="/auth/">Вход для работодателей</a>
+			<% } %>
+			<div class="triangle"></div>
+		</div>
+	</div>
+	<div id="middle">

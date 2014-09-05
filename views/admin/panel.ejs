@@ -1,0 +1,16 @@
+<% include ../common/header %>
+<% include ../common/admin_sidebar %>
+<div id="vacancies">
+    <% if(posts && posts.length) {
+            posts.forEach(function(item){%>
+    <%include ../vacancy/pre-vacancy%>
+    <%});
+
+            for(key in pages){%>
+    <a href="<%=pages[key]%>"><%=key%></a>
+    <%}
+    } else { %>
+    <div class="padding"><span>Вакансий по заданным критериям не найдено</span></div>
+    <% } %>
+</div>
+<% include ../common/footer%>

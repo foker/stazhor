@@ -1,0 +1,29 @@
+<% if (typeof item!='undefined'){%>
+<div class="vacancy <%if(item.isActive==1){%>disabled<%}%>" >
+    <span class="zp">
+		<%if(item.salary && item.salary!=0){%><%= item.salary %> р.<%
+		} else if(item.salary===0) {
+			%>безвозмездно<% 
+		} else { 
+			%>по договоренности<% 
+		} %>
+	</span>
+    <h3><a class="post_title" href="/post/<%=item.id%>"><%=item.title%></a></h3>
+    <p class="vacancy-stat">
+        <span class="com-name"><%=item.company%></span>
+        <%if(item.date){%>
+        <%var date = new Date(item.date)%>
+        <span class="public-date"><%=date.getDate()%>.<%if(date.getMonth()<9){%>0<%}%><%=date.getMonth()+1%>.<%=date.getYear()-100%></span>
+        <%}%>
+        <span class="city"><%=item.city%></span>
+    </p>
+	<% if(typeof userGroup != 'undefined' && userGroup>0 && editable==true) { %>
+		<div class="vacancy_toolbar>">
+			<form action="/post/<%= item.id %>" method="delete">
+				<input class="vacancy_delete" type="submit" value="Удалить">
+			</form>
+            <%if(item.isActive!=1){%><a class="vacancy_edit" href="/edit/<%= item.id %>" >Редактировать</a><%}%>
+		</div>
+	<% } %>
+</div>
+<% } %>

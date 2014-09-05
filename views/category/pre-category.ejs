@@ -1,0 +1,17 @@
+<% var className = item.active ? '' : 'disable'%>
+<div class="category <%=className%>" active="<%=item.active%>">
+	<%for(i=1;i<item.level;i++){%>
+		<div class="otstup">-</div>
+	<%}%>
+    <span>
+        <%=item.id%>
+        <a href="/category/<%=key%>">
+            <%=item.title%>
+        </a>
+        <form action="/admin/categories/<%=item.id%>/switch" method="post"><input type="submit" value="свитч"></form>
+        <form action="/admin/categories/<%=item.id%>/update" method="post"><input type="submit" value="редактировать"></form>
+    </span>
+    <div class="chelidren category">
+        <% if(item.children) show(item.children) %>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<% include ../common/header %>
+<% include ../common/sidebar %>
+<div id="vacancies">
+<% if(posts && posts.length) posts.forEach(function(item){%>
+<% include ../vacancy/pre-vacancy %>
+<%}); else {%>
+На данный момент здесь пусто. Вы можете исправить это, <a href="/new/">разместив</a> новую вакансию
+<% } %>
+</div>
+<p><% include ../common/footer %></p>

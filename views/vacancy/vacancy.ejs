@@ -1,0 +1,18 @@
+<% include ../common/header %>
+<% include ../common/sidebar %>
+        <div id="vacancy-desc">
+			<h1><%=post.title%></h1>
+            <p><b>Город:</b> <%=post.city%></p>
+            <p><b>Описание:</b> <%=post.desc%></p>
+			<% var salary; if(post.salary===null) {salary='по договоренности';} else if (post.salary===0) {salary='безвозмездно';} else salary = post.salary+'р.' %>
+            <p><b>Вознаграждение:</b> <%=salary%></p>
+			<p><b>Дата:</b> <%=post.date%></p>
+			<p><b>Компания:</b> <%=post.company%></p>
+			<p><b>Просмотров: </b><%=num%></p>
+            <%if(moder){%>
+                <p><a href="/admin/banpost/<%=post.id%>">забанить пост</a></p>
+                <p><a href="/admin/unbanpost/<%=post.id%>">разранить пост</a></p>
+            <%}%>
+        </div>
+
+<p><% include ../common/footer %></p>

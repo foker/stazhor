@@ -1,0 +1,48 @@
+<% include ../common/header %>
+<% include ../common/sidebar %>
+<div class="padding">
+<h1>Страница редактирования поста</h1>
+<% var update = (typeof post != 'undefined'); %>
+<form action="/post/<%=post.id%>" method="put" id="post_filling">
+	<div>
+    <legend>Название</legend>
+    <input type="text" name="title" value="<%if(update && post.title){%><%=post.title%><%}%>">
+	</div>
+	<div>
+    <legend>Описание</legend>
+    <textarea name="desc"><%if(update && post.desc){%><%=post.desc%><%}%></textarea>
+	</div>
+	<div>
+    <legend>Зарплата</legend>
+    <input type="text" name="salary" value="<%if(update && post.salary){%><%=post.salary%><%}%>"><span>р.</span>
+	</div>
+	<div>
+    <legend>Город</legend>
+    <select name="city">
+		<option value="-1">Город</option>
+		<% if(cities){ cities.forEach(function(city){%>
+			<option value="<%=city.id%>" <%if( post.city && city.id==post.city){%>selected<%}%>><%=city.title%></option>
+		<% }); } %>
+	</select>
+	</div>
+	<div>
+    <legend>Телефон</legend>
+    <input type="text" name="phone" value="<%if(update && post.phone){%><%=post.phone%><%}%>">
+	</div>
+	<div>
+    <legend>Сайт компании</legend>
+    <input type="text" name="site" value="<%if(update && post.site){%><%=post.site%><%}%>">
+	</div>
+	
+	<div>
+	<legend>Категория</legend>
+    <select name="category">
+        <%categories.forEach(function(cat){%>
+        <option value="<%=cat.id%>" <%if(post.category == cat.id){%>selected<%}%>><%=cat.title%></option>
+        <%});%>
+    </select>
+	</div>
+    <input type="submit">
+</form>
+</div>
+<legend><% include ../common/footer %></legend>

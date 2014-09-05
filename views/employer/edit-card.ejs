@@ -1,0 +1,41 @@
+<% include ../common/header %>
+<% include ../common/sidebar %>
+<div class="padding">
+<h1>Здесь вы можете отредактировать карточку компании. </h1>
+<p>Карточка удобна для добавления нескольких вакансий - это значения по умолчанию.</p>
+<p>Для любой вакансии вы можете поставить свои контактные данные.</p>
+<% var update = (typeof card != 'undefined'); %>
+<form action="/card/save/" method="post" id="post_filling">
+	<div>
+    <legend>Название</legend>
+    <input type="text" name="title" value="<%if(update && card.title){%><%=card.title%><%}%>">
+	</div>
+	<div>
+	<legend>Описание</legend>
+    <textarea name="desc"><%if(update && card.desc){%><%= card.desc%> <%}%></textarea>
+	</div>
+	<div>
+    <legend>Город(код)</legend>
+	<select name="city">
+		<option value="-1">Город</option>
+		<% if(cities){ cities.forEach(function(city){%>
+			<option value="<%=city.id%>" <%if(city.id==card.city){%>selected<%}%>><%=city.title%></option>
+		<% }); } %>
+	</select>
+	</div>
+	<div>
+    <legend>Сайт</legend>
+    <input type="text" name="site" value="<%if(update && card.site){%><%=card.site%><%}%>">
+	</div>
+	<div>
+    <legend>Контактный телефон</legend>
+    <input type="text" name="phone" value="<%if(update && card.phone){%><%=card.phone%><%}%>">
+	</div>
+	<div>
+	<legend>Контактный e-mail</legend>
+    <input type="text" name="mail" value="<%if(update && card.mail){%><%=card.mail%><%}%>">
+	</div>
+    <input type="submit">
+</form>
+</div>
+<% include ../common/footer %>

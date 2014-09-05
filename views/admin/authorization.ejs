@@ -1,0 +1,11 @@
+<% include ../common/header %>
+<% include ../common/sidebar %>
+<p>Вход администратора!</p>
+<form action="/admin/enter/" method="post">
+    <p>Логин</p>
+    <input type="text" name="login">
+    <p>Пароль</p>
+    <input type="password" name="pass">
+    <input type="submit">
+</form>
+<% include ../common/footer %>

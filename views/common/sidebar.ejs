@@ -1,0 +1,28 @@
+<div id="sidebar" ng-controller="sidebar">
+	<%if(typeof userGroup!='undefined' && (userGroup == 1) ){%>
+		<%include ./employer_sidebar%>
+	<% } %>
+
+	<div id="sidebar-search">
+		<p>Ваш город: <span ng-click="openCityForm()">Санкт-Петербург</span></p>
+		<form action="/">
+		<input type="text" name="s" placeholder="Ключевые слова">
+		<select name="cat" id="cat_selector">
+			<option value="">Выберите категорию</option>
+			<%  /* for(key in cats){ %>
+				<%var item = cats[key]%>
+				<option value="<%=item.id%>">
+					<%for(i=1;i<item.level;i++){%>- <%}%><%=item.title%>
+				</option>
+			<% } */ %>
+		</select>
+		<input type="submit" value="Искать вакансии"  class="button">
+		</form>
+	</div>	
+	<div id="subscribe">
+		<p class="small">Новые вакансии появляются каждый день.<br>Не упусти шанс — следи за обновлениями!</p>
+			<div class="button">Подписаться</div>
+	</div>
+</div>
+<div id="content">
+<div id="content-box">

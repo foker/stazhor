@@ -49,7 +49,7 @@ module.exports = function (app) {
             var isAsync = false;
             configController.action(req, def)
                 .then(function(data){
-                    console.log(data.data);
+                    console.log(1);
                     if(data.data === undefined){
                         if (data.address==undefined)  return res.send({code:500, message:'bad render data'});
                         else return res.redirect(data.address);

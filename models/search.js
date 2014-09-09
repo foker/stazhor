@@ -51,7 +51,7 @@ exports.treat = function(list){
 exports.getList = function(ext){
 	var def = Q.defer();
     var Search = this;
-	var data = {
+	var reqData = {
 		hostname:'localhost', 
 		port:9200, 
 		path:'/test/post/_search', 
@@ -84,17 +84,18 @@ exports.getList = function(ext){
 
 	if(!!ext.from) query.from = (ext.from-1)*10;
 
-    //console.log(qObj);
 
-	var request = Http.request(data, function(result){
-		data = '';
+	var request = Http.request(reqData, function(result){
+		var data = '';
+        console.log(23);
 		result.on('data', function (chunk) {
+            console.log(25);
 			return data = data+chunk;
 		});
 		result.on('end', function(){
 			return Search.treat(data)
                 .then(function(data){
-                    //console.log(data);
+                    console.log(3);
                     def.resolve(data);
                 }, function(err){
                     def.reject(err);
@@ -105,6 +106,5 @@ exports.getList = function(ext){
 	});
 	request.write(JSON.stringify(query));
 	request.end();
-	
 	return def.promise;
 };

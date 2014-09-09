@@ -76,7 +76,7 @@ City.statics = {
 		var def = Q.defer();
 		var City = this;
 		City.find({}, 'title id').exec()
-		.then(function(result){;
+		.then(function(result){
 			if(!result.length) return def.reject({code:'404', message:'cities not found'});
 			return def.resolve({result:result});
 		}, function(err){

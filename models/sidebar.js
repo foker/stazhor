@@ -9,9 +9,11 @@ exports.getData = function(){
 		return [Category.getTree(0, false), list];
 	})
     .spread(function(cats, list){
+            console.log(234234234);
         return def.resolve({cities: list.result, cats: cats.result});
     })
     .catch(function(err){
+            console.log(err);
         return def.reject(err);
     });
 	return def.promise;

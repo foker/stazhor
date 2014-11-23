@@ -74,7 +74,7 @@ module.exports = function (app) {
                 first = false;
                 console.log(e);
                 console.log(1);
-                console.log("Not exist controller file: " + pathFile);
+                console.log("Error occured while hooking up the module: " + pathFile);
                 return;
             }
             if (!controllerObject['action']) return;

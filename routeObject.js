@@ -4,12 +4,12 @@
 
 module.exports = {
     _admin: [
-        {method: 'get', action: 'auth', path: '/admin/auth'},
+        /*{method: 'get', action: 'auth', path: '/admin/auth'},
         {method: 'post', action: 'create', path: '/admin/create'},
         {method: 'post', action: 'enter', path: '/admin/enter'},
-        {method: 'get', action: 'exit', path: '/admin/exit'},
+        {method: 'get', action: 'exit', path: '/admin/exit'},*/
         {method: 'get', action: 'new', path: '/admin/new'}
-    ],
+    ]/*,
 
     _cabinet: [
         {method: 'get', action: 'admin', path: '/panel'},
@@ -54,6 +54,6 @@ module.exports = {
         {method: 'get', action: 'adminWhite', path: '/admin/posts/whitelist/page/:page'},
         {method: 'get', action: 'search', path: '/'},
         {method: 'get', action: 'search', path: '/page/:page'}
-    ]
+    ]*/
 
 };

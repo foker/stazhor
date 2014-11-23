@@ -18,7 +18,7 @@ module.exports = {
             })
             .spread(function(result, sidebar){
                 if(!result) return def.reject({code:404});
-                return [Numerator.inc(req.param('id'), req.connection.remoteAddress), sidebar, result];
+                return [numerator.inc(req.param('id'), req.connection.remoteAddress), sidebar, result];
             }, function(err){
                 def.reject({code:500, msg:err});
             })

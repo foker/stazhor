@@ -88,7 +88,7 @@ Post.methods = {
             post.date = new Date().getTime();
             if(!req.userId)  def.reject({code:403, message: 'unauthorized users can not create posts'});
             post.employerId = req.userId;
-            Numerator.add(id)
+            numerator.add(id)
             .then(function(){
 
                 return Employer.findOne({id:post.employerId}, 'title').exec();

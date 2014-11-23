@@ -21,10 +21,18 @@ module.exports = {
 		.then(function(res){
             if(!!res) return def.reject({code:'notunique'});
             var user = new User(req);
+                console.log(req.login);
             return user.make(req.pass);
         }, function(err){
 			def.reject({code: 'db', message: err});
-		});
+		})
+            .then(function(){
+                console.log(444);
+                def.resolve();
+            }, function(err){
+                def.reject(err);
+                console.log(err);
+            });
 		return def.promise;
     },
     enter: function(type, req){

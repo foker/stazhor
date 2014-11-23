@@ -44,11 +44,14 @@ Category.statics = {
 		return def.promise;
     },
     getTree: function(parent,onlyChild){
+        console.log('cat');
 		var def = Q.defer();
         var Category = this;
+
         Category.find({}).exec()
 		.then(function(res){
-            if(!res.length) return def.reject({code:404});
+            //if(!res.length) return def.reject({code:404});
+            return def.resolve({result:[]});
             var makeTree = function(result, collection, root, onlyChild, levelCounter, status){
 				var levelCounter = (typeof levelCounter == 'undefined') ? 0 : levelCounter;
 				levelCounter++;

@@ -12,8 +12,11 @@ module.exports = {
     auth: false,
     action:function(req, def) {
         Admin.registration(req.body)
-            .both(function () {
+            .then(function () {
+                console.log('end')
                 def.resolve({address:'/admin/auth'});
+            }, function(err){
+                def.reject(err)
             });
         return def.promise;
     }

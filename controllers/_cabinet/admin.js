@@ -16,8 +16,6 @@ module.exports = {
                 console.log(14);
                 return def.resolve({address:'admin/panel',data:{userGroup:req.userGroup, emps: data}});
             }, function(err){
-                console.log(15);
-                console.log(err);
                 def.reject(err);
             });
 

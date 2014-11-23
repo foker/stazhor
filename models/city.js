@@ -4,7 +4,9 @@ var mongoose = require('mongoose')
   , Counters = require('./counters')
   , Post = require('./post')
   , async = require('async')
-  , Q = require('q');
+  , Q = require('q')
+    , cities = require('./cities.js').cities
+    , _ = require('underscore');
   
 var City = new Schema({
 	id: {
@@ -73,7 +75,7 @@ City.statics = {
 		return def.promise;
 	},
 	list: function(){
-		var def = Q.defer();
+		/*var def = Q.defer();
 		var City = this;
 		City.find({}, 'title id').exec()
 		.then(function(result){
@@ -82,7 +84,16 @@ City.statics = {
 		}, function(err){
 			return def.reject({code:500, message:err});
 		});
-		return def.promise;
+		return def.promise;*/
+        console.log('cities');
+        return {
+            result: _.map(cities.cities, function (item, i) {
+                return {
+                    title: item,
+                    id: i
+                }
+            })
+        };
 	},
 	getTitle: function(id){
 		var def = Q.defer();

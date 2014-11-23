@@ -4,16 +4,15 @@ var City = require('./city')
 	
 exports.getData = function(){
 	var def = Q.defer();
-	City.list()
-	.then(function(list){
-		return [Category.getTree(0, false), list];
-	})
-    .spread(function(cats, list){
-            console.log(234234234);
+    console.log('sidebar');
+	var list = City.list();
+	Category.getTree(0, false)
+    .then(function(cats){
+        console.log(234234234);
         return def.resolve({cities: list.result, cats: cats.result});
     })
     .catch(function(err){
-            console.log(err);
+        console.log(err);
         return def.reject(err);
     });
 	return def.promise;

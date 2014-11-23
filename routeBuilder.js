@@ -65,12 +65,15 @@ module.exports = function (app) {
     };
 
     return _.each(routeObject, function (val, key) {
+
         return _.each(val, function(route){
             var pathFile = './controllers/'+key+'/'+route['action'];
             try {
                 var controllerObject = require(pathFile);
             } catch (e) {
                 first = false;
+                console.log(e);
+                console.log(1);
                 console.log("Not exist controller file: " + pathFile);
                 return;
             }

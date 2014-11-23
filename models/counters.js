@@ -1,6 +1,5 @@
 var mongoose = require('mongoose')
     , Schema = mongoose.Schema
-    , async = require('async')
 	, Q = require('q');
 
 
